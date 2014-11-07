@@ -63,8 +63,7 @@ int main(void)
     else if (num_devices > 0)
     {
         printf("%d devices found!\n", num_devices);
-        curdev = devlist;
-        while (curdev != NULL)
+        for (curdev = devlist; curdev != NULL; curdev = curdev->next)
         {
             // Get device serial
             char serial[128];
@@ -114,7 +113,6 @@ int main(void)
                     fprintf(stderr, "Unable to close device: %d (%s)\n", ret, ftdi_get_error_string(ftdi));
                 }
             }
-            curdev = curdev->next;
         }
         return EXIT_SUCCESS;
     }
