@@ -9,7 +9,6 @@
 
 ## Building
 
-You'll need to build and install version 1.2 of libftdi before compiling this program. 
-
-    gcc brick.c -o brick `pkg-config --cflags --libs libftdi1`
-    gcc unbrick.c -o unbrick `pkg-config --cflags --libs libftdi1`
+You'll need to build and install version 1.2 of libftdi before
+compiling this program. Once you have it installed, simply run `make`
+and everything should compile.
