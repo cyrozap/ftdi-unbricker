@@ -1,5 +1,7 @@
 # ftdi-unbricker
 
+[![Build Status](https://travis-ci.org/cyrozap/ftdi-unbricker.svg?branch=master)](https://travis-ci.org/cyrozap/ftdi-unbricker)
+
 ## Usage
 
 - `brick` willl set the PID to zero for every FTDI device with the
