@@ -35,4 +35,5 @@ deploy:
   on:
     repo: cyrozap/ftdi-unbricker
     tags: true
+    all_branches: true
     condition: "$CC = gcc"
