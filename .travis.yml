@@ -6,14 +6,13 @@ compiler:
 
 before_install:
   - gpg --recv-keys 3CEA9B8868BC3852618EB5B4707F91A424F006F5
-  - gpg --lsign-key 3CEA9B8868BC3852618EB5B4707F91A424F006F5
   - sudo apt-get update -qq
 
 install:
   - sudo apt-get install -qq libusb-1.0-0-dev
   - wget http://www.intra2net.com/en/developer/libftdi/download/libftdi1-1.2.tar.bz2
   - wget http://www.intra2net.com/en/developer/libftdi/download/libftdi1-1.2.tar.bz2.sig
-  - gpg --verify libftdi1-1.2.tar.bz2.sig
+  - gpg --trust-model always --verify libftdi1-1.2.tar.bz2.sig
   - tar -xjf libftdi1-1.2.tar.bz2
   - cd libftdi-1.2
   - mkdir build
