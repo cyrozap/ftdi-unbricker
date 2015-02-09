@@ -4,6 +4,9 @@ compiler:
   - gcc
   - clang
 
+env:
+  - ARCH=x86_64
+
 before_install:
   - gpg --recv-keys 3CEA9B8868BC3852618EB5B4707F91A424F006F5
   - sudo apt-get update -qq
@@ -25,13 +28,13 @@ install:
 script: make
 
 before_deploy:
-  - tar -czf ftdi-unbricker_linux_x86_64.tar.gz ./COPYING.txt ./README.md ./brick ./unbrick
+  - tar -czf ftdi_unbricker-$TRAVIS_TAG-$TRAVIS_OS_NAME-$ARCH.tar.gz ./COPYING.txt ./README.md ./brick ./unbrick
 
 deploy:
   provider: releases
   api_key:
     secure: iQv119YN4v85B8hgeZLIDPqEGnQPrfq7326XKMPTmgLCPhv92jPs38ArAAygtoZahZiDEqgtiW/l6HKyS/Y1vEG9afqbMCun+4Cy35gAKBi5FFvORcPjINXuS1cxUJ4gHam73Br8hEQ1jV0Nv6rk03XrBtTpjEH6fpu+v4EHcuA=
-  file: ftdi-unbricker_linux_x86_64.tar.gz
+  file: "ftdi_unbricker-$TRAVIS_TAG-$TRAVIS_OS_NAME-$ARCH.tar.gz"
   on:
     repo: cyrozap/ftdi-unbricker
     tags: true
