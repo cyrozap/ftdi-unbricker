@@ -8,7 +8,7 @@ LDFLAGS += $(shell pkg-config --libs libftdi1)
 all: $(TARGETS)
 
 %: %.c
-	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $<
+	$(CC) $< $(CFLAGS) $(LDFLAGS) -o $@
 
 clean:
 	rm -f $(TARGETS)
