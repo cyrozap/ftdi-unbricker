@@ -30,6 +30,7 @@ install:
       elif [ "$ARCH" = "i386" ];
       then
         sudo apt-get install -qq gcc-multilib libusb-1.0-0-dev:i386;
+        export CFLAGS="-m32";
       fi
     fi
   - if [ "$TRAVIS_OS_NAME" = "osx" ];
@@ -39,13 +40,7 @@ install:
     fi
   - mkdir build
   - cd build
-  - if [ "$ARCH" = "x86_64" ];
-    then
-      cmake ../;
-    elif [ "$ARCH" = "i386" ];
-    then
-      cmake -DCMAKE_REQUIRED_FLAGS="-m32" ../;
-    fi
+  - cmake ../
   - make
   - sudo make install
   - cd ../../
