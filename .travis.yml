@@ -45,11 +45,7 @@ install:
   - cd ../../
 
 script:
-  - if [ "$ARCH" = "i386" ];
-    then
-      export CFLAGS="-m32";
-      make;
-    fi
+  - make
 
 before_deploy:
   - tar -czf ftdi_unbricker-$TRAVIS_TAG-$TRAVIS_OS_NAME-$ARCH.tar.gz ./COPYING.txt ./README.md ./brick ./unbrick
