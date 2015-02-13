@@ -4,20 +4,37 @@ compiler:
   - gcc
   - clang
 
+os:
+  - linux
+  - osx
+
 env:
   - ARCH=x86_64
+  - ARCH=i386
 
 before_install:
   - gpg --recv-keys 3CEA9B8868BC3852618EB5B4707F91A424F006F5
-  - sudo apt-get update -qq
-
-install:
-  - sudo apt-get install -qq libusb-1.0-0-dev
   - wget http://www.intra2net.com/en/developer/libftdi/download/libftdi1-1.2.tar.bz2
   - wget http://www.intra2net.com/en/developer/libftdi/download/libftdi1-1.2.tar.bz2.sig
   - gpg --trust-model always --verify libftdi1-1.2.tar.bz2.sig
   - tar -xjf libftdi1-1.2.tar.bz2
+
+install:
   - cd libftdi1-1.2
+  - if [ "$TRAVIS_OS_NAME" = "linux" ];
+    then
+      sudo apt-get update -qq;
+      sudo apt-get install -qq libusb-1.0-0-dev;
+      if [ "$ARCH" = "i386" ];
+      then
+        sudo apt-get install -qq gcc-multilib;
+      fi
+    fi
+  - if [ "$TRAVIS_OS_NAME" = "osx" ];
+    then
+      brew update;
+      brew install libusb;
+    fi
   - mkdir build
   - cd build
   - cmake ../
@@ -25,7 +42,12 @@ install:
   - sudo make install
   - cd ../../
 
-script: make
+script:
+  - if [ "$ARCH" = "i386" ];
+    then
+      export CC+=" -m32";
+      make;
+    fi
 
 before_deploy:
   - tar -czf ftdi_unbricker-$TRAVIS_TAG-$TRAVIS_OS_NAME-$ARCH.tar.gz ./COPYING.txt ./README.md ./brick ./unbrick
