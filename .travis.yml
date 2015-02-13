@@ -45,6 +45,7 @@ install:
   - cd ../../
 
 script:
+  - export CFLAGS="$CFLAGS -static"
   - make
 
 before_deploy:
