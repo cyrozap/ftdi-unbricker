@@ -56,7 +56,7 @@ deploy:
   provider: releases
   api_key:
     secure: iQv119YN4v85B8hgeZLIDPqEGnQPrfq7326XKMPTmgLCPhv92jPs38ArAAygtoZahZiDEqgtiW/l6HKyS/Y1vEG9afqbMCun+4Cy35gAKBi5FFvORcPjINXuS1cxUJ4gHam73Br8hEQ1jV0Nv6rk03XrBtTpjEH6fpu+v4EHcuA=
-  file: "ftdi_unbricker-$TRAVIS_TAG-$TRAVIS_OS_NAME-$ARCH.tar.gz"
+  file: "ftdi_unbricker-$TRAVIS_TAG-$TRAVIS_OS_NAME-$ARCH-static.tar.gz"
   on:
     repo: cyrozap/ftdi-unbricker
     tags: true
