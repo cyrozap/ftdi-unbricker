@@ -44,7 +44,7 @@ install:
       cmake ../;
     elif [ "$ARCH" = "i386" ];
     then
-      cmake -DCMAKE_C_FLAGS="-m32" -DCMAKE_SHARED_LINKER_FLAGS="-m32" ../;
+      cmake -DCMAKE_REQUIRED_FLAGS="-m32" ../;
     fi
   - make
   - sudo make install
