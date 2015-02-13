@@ -46,6 +46,7 @@ install:
 
 script:
   - export CFLAGS="$CFLAGS -static"
+  - export LDFLAGS=$(pkg-config --static --libs libftdi1)
   - make
 
 before_deploy:
