@@ -24,10 +24,12 @@ install:
   - if [ "$TRAVIS_OS_NAME" = "linux" ];
     then
       sudo apt-get update -qq;
-      sudo apt-get install -qq libusb-1.0-0-dev;
-      if [ "$ARCH" = "i386" ];
+      if [ "$ARCH" = "x86_64" ];
       then
-        sudo apt-get install -qq gcc-multilib;
+        sudo apt-get install -qq libusb-1.0-0-dev;
+      elif [ "$ARCH" = "i386" ];
+      then
+        sudo apt-get install -qq gcc-multilib libusb-1.0-0-dev:i386;
       fi
     fi
   - if [ "$TRAVIS_OS_NAME" = "osx" ];
