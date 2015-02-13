@@ -53,7 +53,7 @@ install:
 script:
   - if [ "$ARCH" = "i386" ];
     then
-      export CC+=" -m32";
+      export CFLAGS="-m32";
       make;
     fi
 
