@@ -59,7 +59,7 @@ int main(void)
         fprintf(stderr, "No devices found.\n");
         ftdi_free(ftdi);
         ftdi_list_free(&devlist);
-        return EXIT_FAILURE;
+        return EXIT_SUCCESS;
     }
     else if (num_devices > 0)
     {
