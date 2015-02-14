@@ -37,7 +37,7 @@ int main(void)
     if ((ftdi = ftdi_new()) == 0)
     {
         fprintf(stderr, "ftdi_new failed\n");
-        return ftdi;
+        return EXIT_FAILURE;
     }
 
     version = ftdi_get_library_version();
