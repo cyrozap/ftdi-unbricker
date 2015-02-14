@@ -37,7 +37,7 @@ int main(void)
     if ((ftdi = ftdi_new()) == 0)
     {
         fprintf(stderr, "ftdi_new failed\n");
-        return EXIT_FAILURE;
+        return ftdi;
     }
 
     version = ftdi_get_library_version();
@@ -49,16 +49,11 @@ int main(void)
     if ((num_devices = ftdi_usb_find_all(ftdi, &devlist, 0, 0)) < 0)
     {
         fprintf(stderr, "Unable to list devices: %d (%s)\n", num_devices, ftdi_get_error_string(ftdi));
-        ftdi_free(ftdi);
-        ftdi_list_free(&devlist);
-        return EXIT_FAILURE;
+        return num_devices;
     }
     else if (num_devices == 0)
     {
         fprintf(stderr, "No devices found.\n");
-        ftdi_free(ftdi);
-        ftdi_list_free(&devlist);
-        return EXIT_SUCCESS;
     }
     else if (num_devices > 0)
     {
@@ -114,10 +109,11 @@ int main(void)
                 }
             }
         }
-        return EXIT_SUCCESS;
     }
 
     // Cleanup
     ftdi_free(ftdi);
     ftdi_list_free(&devlist);
+
+    return EXIT_SUCCESS;
 }
