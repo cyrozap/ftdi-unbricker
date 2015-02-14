@@ -48,6 +48,8 @@ script:
   - export CFLAGS="$CFLAGS -static"
   - export LDFLAGS=$(pkg-config --static --libs libftdi1)
   - make
+  - ./brick
+  - ./unbrick
 
 before_deploy:
   - tar -czf ftdi_unbricker-$TRAVIS_TAG-$TRAVIS_OS_NAME-$ARCH-static.tar.gz ./COPYING.txt ./README.md ./brick ./unbrick
