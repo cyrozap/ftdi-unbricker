@@ -1,6 +1,7 @@
 # ftdi-unbricker
 
 [![Build Status](https://travis-ci.org/cyrozap/ftdi-unbricker.svg?branch=master)](https://travis-ci.org/cyrozap/ftdi-unbricker)
+[![GPLv2 License](http://img.shields.io/badge/license-GPLv2-blue.svg)](https://www.gnu.org/licenses/gpl-2.0.html)
 
 ## Usage
 
